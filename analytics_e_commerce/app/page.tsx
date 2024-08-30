@@ -1,7 +1,14 @@
-import Image from "next/image";
+import { BarGraph } from "@/components/dashboard/bar-graph";
+import Summary from "@/components/dashboard/summary";
 
 export default function Home() {
   return (
-    <div>Dashboard</div>
+    <div className="p-4 grid gap-5">
+      <Summary />
+
+      <div className="grid lg:grid-cols-2 gap-10">
+        <BarGraph />
+      </div>
+    </div>
   );
 }

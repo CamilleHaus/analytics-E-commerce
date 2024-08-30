@@ -30,7 +30,6 @@ export default function RootLayout({
             <Sidebar />
             <section className="min-h-screen flex-1">{children}</section>
           </main>
-          {children}
         </ThemeProvider>
       </body>
     </html>
