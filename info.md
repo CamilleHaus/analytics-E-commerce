@@ -6,3 +6,5 @@
 - Framer Motion 
 
  - Usando essa biblioteca para adicionar animações
+
+- MockAPI
