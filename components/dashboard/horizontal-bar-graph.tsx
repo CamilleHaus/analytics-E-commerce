@@ -67,7 +67,8 @@ export function HorizontalGraph() {
       title={"Traffic Bar Chart"}
       subtitle={"Showing visitors from different countries"}
     >
-      <ChartContainer config={chartConfig}>
+      <ChartContainer config={chartConfig} 
+      className="mx-auto aspect-square w-full max-h-[400px] mt-10">
         <BarChart
           accessibilityLayer
           data={chartData}
