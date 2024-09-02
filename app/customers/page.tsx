@@ -18,7 +18,7 @@ const Page = async () => {
   const data = await getCustomers();
 
   return (
-    <section className="p-6">
+    <div className="p-6">
       <AnalyticsCard
         title={"Customers"}
         subtitle={"Showing all customers with orders"}
@@ -26,7 +26,7 @@ const Page = async () => {
         <Button className="mb-3">Add New Customer</Button>
         <DataTable columns={columns} data={data}/>
       </AnalyticsCard>
-    </section>
+    </div>
   );
 };
 

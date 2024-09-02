@@ -6,6 +6,7 @@ import { DataTable } from "../ui/data-table";
 import React from "react";
 import AnalyticsCard from "./analytics-card";
 import { ProductsDummyData } from "@/constants/data";
+import { formatPrice } from "@/utils/formatPrice";
 
 export type TTopProducts = {
   id: number;
@@ -23,6 +24,11 @@ export const topProductsColumns: ColumnDef<TTopProducts>[] = [
   {
     accessorKey: "revenue",
     header: "Revenue",
+    cell: ({ row }) => {
+      const totalRevenue = row.getValue("revenue") as number;
+
+      return <>{formatPrice(totalRevenue)}</>;
+    },
   },
   {
     accessorKey: "image",
@@ -44,8 +50,9 @@ export const topProductsColumns: ColumnDef<TTopProducts>[] = [
 ];
 
 const TopProducts = () => {
-
-  const topProducts = ProductsDummyData.sort((a, b) => b.revenue = a.revenue).slice(0, 4);
+  const topProducts = ProductsDummyData.sort(
+    (a, b) => (b.revenue = a.revenue)
+  ).slice(0, 4);
   return (
     <AnalyticsCard
       title={"Top Products"}

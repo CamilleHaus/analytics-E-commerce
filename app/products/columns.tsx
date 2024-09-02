@@ -10,23 +10,33 @@ import {
   DropdownMenuContent,
   DropdownMenuItem, DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import { formatPrice } from "@/utils/formatPrice";
 
-export type Customers = {
-  id: string;
+export type Products = {
+  id: string | number;
   name: string;
-  email: string;
-  orders: number;
+  price: number;
+  revenue: number;
   image: string;
 };
 
-export const columns: ColumnDef<Customers>[] = [
+export const columns: ColumnDef<Products>[] = [
   {
     accessorKey: "name",
     header: "Name",
   },
   {
-    accessorKey: "orders",
-    header: "Orders",
+    accessorKey: "price",
+    header: "Price",
+    cell: ({ row }) => {
+      const totalPrice = row.getValue("price") as number;
+
+      return (
+        <>
+        {formatPrice(totalPrice)}
+        </>
+      )
+    }
   },
   {
     accessorKey: "image",
@@ -59,8 +69,8 @@ export const columns: ColumnDef<Customers>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>Edit Customer</DropdownMenuItem>
-            <DropdownMenuItem>Delete Customer</DropdownMenuItem>
+            <DropdownMenuItem>Edit Product</DropdownMenuItem>
+            <DropdownMenuItem>Delete Product</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
